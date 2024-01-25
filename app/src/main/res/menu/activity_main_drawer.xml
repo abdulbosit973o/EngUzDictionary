@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/plus"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_change_uz"
+            android:icon="@drawable/plus"
+            android:title="Uz Eng Dictionary" />
+
+        <item
+            android:id="@+id/bookmarks"
+            android:icon="@drawable/bookmark_unchecked"
+            android:title="Bookmarks" />
+
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/share"
+            android:title="@string/share" />
+        <item
+            android:id="@+id/like"
+            android:icon="@drawable/like"
+            android:title="@string/rate_this_app" />
+
+        <item
+            android:id="@+id/more_apps"
+            android:icon="@drawable/application"
+            android:title="More apps" />
+
+        <item
+            android:id="@+id/privacy_police"
+            android:icon="@drawable/file"
+            android:title="Privacy Police" />
+    </group>
+</menu>

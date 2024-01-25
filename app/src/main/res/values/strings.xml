@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Eng Uz Dictionary</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Eng Uz Dictionary</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="share">Share this app</string>
+    <string name="rate_this_app">Rate this app</string>
+</resources>

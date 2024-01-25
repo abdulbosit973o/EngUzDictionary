@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerItem"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_word_item"
+    android:layout_height="100dp">
+
+    <TextView
+        android:id="@+id/english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        tools:text="Abdulloh"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/containerItem"
+        app:layout_constraintBottom_toTopOf="@id/uzbek"
+        />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textColor="#9E9191"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/english"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintLeft_toRightOf="@id/english"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/english"
+        tools:text="noun" />
+
+    <TextView
+        android:id="@+id/transcript"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:gravity="center"
+        android:textColor="#9E9191"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/english"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintLeft_toRightOf="@id/type"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/english"
+        tools:text="noun" />
+
+
+
+    <TextView
+        android:id="@+id/uzbek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#9E9191"
+        tools:text="Abdulloh"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/english"
+        app:layout_constraintBottom_toBottomOf="@id/containerItem"
+        />
+
+    <ImageView
+        android:id="@+id/save"
+        android:layout_width="18dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_height="18dp"
+        android:src="@drawable/bookmark_unchecked"
+        android:layout_marginRight="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

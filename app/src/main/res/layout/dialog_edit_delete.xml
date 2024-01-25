@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@drawable/bg_dialog_reset">
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="3dp"
+        android:background="@drawable/bg_dialog_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Choose action"
+        android:textSize="22sp"
+        android:textColor="#000"
+        app:layout_constraintHorizontal_bias="0"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/guideline6"
+        app:layout_constraintTop_toBottomOf="@id/share" />
+
+    <ImageView
+        android:id="@+id/volume"
+        android:layout_width="24dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/volume"
+        app:layout_constraintTop_toTopOf="@id/english"
+        app:layout_constraintBottom_toBottomOf="@id/english"
+        app:layout_constraintStart_toEndOf="@id/english"
+        android:layout_height="24dp"
+        />
+
+    <TextView
+        android:id="@+id/transcript"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:textColor="#000"
+        android:textStyle="italic"
+        android:fontFamily="@font/avenir"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/english"
+        app:layout_constraintTop_toBottomOf="@+id/english"
+        />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:textColor="#000"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/english"
+        app:layout_constraintTop_toBottomOf="@+id/transcript"
+        />
+
+    <TextView
+        android:id="@+id/countable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textColor="#000"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/type"
+        app:layout_constraintTop_toTopOf="@+id/type"
+        app:layout_constraintBottom_toBottomOf="@id/type"
+        />
+
+    <TextView
+        android:id="@+id/uzbek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/english"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        />
+
+
+    <ImageView
+        android:id="@+id/share"
+        android:layout_width="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/share"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/favourite"
+        android:layout_height="24dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/favourite"
+        android:layout_width="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/bookmark_unchecked"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="24dp"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.98" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
