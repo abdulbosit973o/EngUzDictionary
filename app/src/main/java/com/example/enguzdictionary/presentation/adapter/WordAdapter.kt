@@ -31,7 +31,6 @@ class WordAdapter : Adapter<WordAdapter.WordViewHolder>() {
         private val save = view.findViewById<ImageView>(R.id.save)
         @SuppressLint("NotifyDataSetChanged")
         fun bind(item: WordData) {
-            Log.d("TTT", "${item.id}")
 
             if (item.is_favourite == 1) save.setImageResource(R.drawable.bookmark)
             else save.setImageResource(R.drawable.bookmark_unchecked)
@@ -108,12 +107,12 @@ class WordAdapter : Adapter<WordAdapter.WordViewHolder>() {
 
     @SuppressLint("Range")
     override fun onBindViewHolder(holder: WordViewHolder, @SuppressLint("RecyclerView") position: Int) {
-        val cursor = cursor!!
-        if (lastAnimatedItemPosition < position) {
-            animateItem(holder.itemView)
-            lastAnimatedItemPosition = position
-        }
-
+//        val cursor = cursor!!
+//        if (lastAnimatedItemPosition < position) {
+//            animateItem(holder.itemView)
+//            lastAnimatedItemPosition = position
+//        }
+//
 
 //        holder.save.setOnClickListener {
 //

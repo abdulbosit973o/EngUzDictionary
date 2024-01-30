@@ -1,7 +1,6 @@
 package com.example.enguzdictionary.presentation.adapter
 
 import android.annotation.SuppressLint
-import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +12,31 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.enguzdictionary.R
 import com.example.enguzdictionary.data.models.WordData
 
-class SavedWordsUzAdapter(var list: List<WordData>) : Adapter<SavedWordsUzAdapter.WordViewHolder>(), ItemNimadir {
+class SavedWordsUzAdapter(var list: List<WordData>) : Adapter<SavedWordsUzAdapter.WordViewHolder>(),
+    ItemNimadir {
     private var itemTouchListener: ((WordData) -> Unit)? = null
+    private var saveTouchListener: ((WordData) -> Unit)? = null
+    private var listEmptyListener: ((String) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class WordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val english = view.findViewById<TextView>(R.id.english)
         private val containerView = view.findViewById<ConstraintLayout>(R.id.containerItem)
         private val uzbek = view.findViewById<TextView>(R.id.uzbek)
         private val save = view.findViewById<ImageView>(R.id.save)
+
         init {
+            save.setOnClickListener {
+                val copy = list[adapterPosition].copy(is_favouriteUz = 0)
+                val mutableList = list.toMutableList()
+                mutableList.removeAt(adapterPosition)
+                list = mutableList
+                if (list.isEmpty()) {
+                    listEmptyListener?.invoke("English is Empty")
+                }
+                notifyDataSetChanged()
+                saveTouchListener?.invoke(copy)
+            }
             containerView.setOnClickListener {
                 itemTouchListener?.invoke(list[adapterPosition])
             }
@@ -56,5 +71,11 @@ class SavedWordsUzAdapter(var list: List<WordData>) : Adapter<SavedWordsUzAdapte
 
     fun setItemTouchListener(block: (WordData) -> Unit) {
         this.itemTouchListener = block
+    }
+    fun setSaveTouchListener(block: (WordData) -> Unit) {
+        this.saveTouchListener = block
+    }
+    fun setListEmptyListener(block: (String) -> Unit) {
+        this.listEmptyListener = block
     }
 }

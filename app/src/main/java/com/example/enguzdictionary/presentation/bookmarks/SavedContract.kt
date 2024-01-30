@@ -1,12 +1,12 @@
 package com.example.enguzdictionary.presentation.bookmarks
 
-import android.database.Cursor
 import com.example.enguzdictionary.data.models.WordData
 
 interface SavedContract {
     interface Model{
         fun getCursorFromRepo(): List<WordData>
         fun getUzListFromRepo(): List<WordData>
+        fun updateData(wordData: WordData)
     }
     interface View {
         fun Cursor(cursor: List<WordData>)
@@ -14,5 +14,6 @@ interface SavedContract {
     interface Presenter  {
         fun loadCursor()
         fun loadUzList()
+        fun updateSaved(wordData: WordData)
     }
 }

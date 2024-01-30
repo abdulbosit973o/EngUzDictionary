@@ -53,14 +53,14 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
         when (pos) {
             0 -> {
                 presenter.loadCursor()
-                adapter = SavedWordsAdapter(list)
-            }
+                adapter = SavedWordsAdapter(list)            }
 
             1 -> {
                 presenter.loadUzList()
                 adapter = SavedWordsUzAdapter(list)
             }
         }
+
 
         binding.recyclerBookmarks.adapter = when (pos) {
             0 -> {
@@ -72,6 +72,9 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
             }
         }
 
+
+
+
         binding.recyclerBookmarks.layoutManager = LinearLayoutManager(requireContext())
 
 
@@ -81,6 +84,12 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
                 adapterEng.setItemTouchListener {
                     showBottomSheetDialog(it)
                 }
+                adapterEng.setSaveTouchListener {
+                    presenter.updateSaved(it)
+                }
+                adapterEng.setListEmptyListener {
+                    binding.placeholder.visibility = View.VISIBLE
+                }
             }
 
 
@@ -88,6 +97,12 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
                 val adapterUz = adapter as SavedWordsUzAdapter
                 adapterUz.setItemTouchListener {
                     showBottomSheetDialog(it)
+                }
+                adapterUz.setSaveTouchListener {
+                    presenter.updateSaved(it)
+                }
+                adapterUz.setListEmptyListener {
+                    binding.placeholder.visibility = View.VISIBLE
                 }
             }
 
@@ -125,9 +140,17 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
         val uzbek = dialog.findViewById<TextView>(R.id.uzbek)
         val favourite = dialog.findViewById<ImageView>(R.id.favourite)
 
-        english.text = wordData.english
+        when (MySharedPref.getOpenScreen()) {
+            0 -> {
+                english.text = wordData.english
+                uzbek.text = wordData.uzbek
+            }
+            else -> {
+                english.text = wordData.uzbek
+                uzbek.text = wordData.english
+            }
+        }
         type.text = wordData.type
-        uzbek.text = wordData.uzbek
         transcript.text = wordData.transcript
         when (wordData.is_favourite) {
             0 -> {

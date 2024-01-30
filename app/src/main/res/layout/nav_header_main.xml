@@ -15,16 +15,54 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:roundIcon="@drawable/dictionary_icon"
+        android:scaleType="centerCrop"
+        android:roundIcon="@drawable/playstore"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dictionary_icon" />
+        app:srcCompat="@drawable/playstore" />
+
+    <TextView
+        android:id="@+id/enguz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eng-Uz"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toTopOf="@+id/uzeng"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dictionary"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/uzeng" />
+
+    <TextView
+        android:id="@+id/uzeng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uz-Eng"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toTopOf="@+id/text"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/enguz" />
 
 
 

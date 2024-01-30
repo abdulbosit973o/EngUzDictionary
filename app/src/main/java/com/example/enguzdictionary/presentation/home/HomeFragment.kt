@@ -67,6 +67,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
 
+//        val fastScroller = FastScroller(binding)
+//        fastScroller.setThumbSize(20, 20) // Set the width and height of the thumb
+//
+//        recyclerView.setVerticalScrollbarPosition(View.SCROLLBAR_POSITION_RIGHT) // Set scrollbar position
 
 
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
@@ -102,6 +106,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
 
         presenter.loadCursor()
     }
+
 
 
     override fun Cursor(cursor: Cursor) {
@@ -165,6 +170,19 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
             tts!!.speak(wordData.english, TextToSpeech.QUEUE_ADD, null)
         }
 
+        dialog.findViewById<ImageView>(R.id.share).setOnClickListener{
+            val intent = Intent(Intent.ACTION_SEND)
+            val shareBody = "English: ${wordData.english} ${wordData.countable}  ${wordData.transcript}\n\nUzbek: ${wordData.uzbek}\n\nDownload on google play\n\nhttps://play.google.com/store/apps/details?id=org.telegram.messenger"
+            intent.setType("text/plain")
+            intent.putExtra(
+                Intent.EXTRA_SUBJECT,
+                getString(androidx.appcompat.R.string.abc_action_bar_home_description)
+            )
+            intent.putExtra(Intent.EXTRA_TEXT, shareBody)
+            startActivity(Intent.createChooser(intent, getString(R.string.app_name)))
+        }
+
+
         dialog.show()
         dialog.window?.setBackgroundDrawable(ColorDrawable( Color.TRANSPARENT))
         dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -188,6 +206,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
         }
 
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

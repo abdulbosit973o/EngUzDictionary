@@ -1,5 +1,6 @@
 package com.example.enguzdictionary.presentation.bookmarks
 
+import com.example.enguzdictionary.data.models.WordData
 import java.util.concurrent.Executors
 
 class SavedPresenter(var view: SavedContract.View) : SavedContract.Presenter {
@@ -17,6 +18,12 @@ class SavedPresenter(var view: SavedContract.View) : SavedContract.Presenter {
     override fun loadUzList() {
         executors.execute  {
             view.Cursor(model.getUzListFromRepo())
+        }
+    }
+
+    override fun updateSaved(wordData: WordData) {
+        executors.execute  {
+            model.updateData(wordData)
         }
     }
 }

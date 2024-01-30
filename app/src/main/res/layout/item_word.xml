@@ -75,9 +75,10 @@
 
     <ImageView
         android:id="@+id/save"
-        android:layout_width="18dp"
+        android:layout_width="28dp"
+        android:padding="4dp"
         android:background="?selectableItemBackgroundBorderless"
-        android:layout_height="18dp"
+        android:layout_height="26dp"
         android:src="@drawable/bookmark_unchecked"
         android:layout_marginRight="28dp"
         app:layout_constraintBottom_toBottomOf="parent"

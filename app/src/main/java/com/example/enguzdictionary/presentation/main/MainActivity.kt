@@ -28,16 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val drawerLayout: DrawerLayout = binding.drawerLayout
 
-//        binding.appBarMain.searchVoiceBtn.setOnClickListener {
-//            Toast.makeText(this, "salom", Toast.LENGTH_SHORT).show()
-//        }
-
         setSupportActionBar(binding.appBarMain.toolbar)
-
-//        binding.appBarMain.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
 
 
         when(MySharedPref.getOpenScreen()) {
@@ -83,8 +74,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_change_uz, R.id.bookmarks, R.id.share

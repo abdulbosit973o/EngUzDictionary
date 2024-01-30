@@ -7,10 +7,10 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/dictionary_icon"
+        android:icon="@drawable/playstore"
         android:name=".app.App"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/dictionary_icon"
+        android:roundIcon="@drawable/playstore"
         android:supportsRtl="true"
         android:theme="@style/Theme.EngUzDictionary"
         tools:targetApi="31">

@@ -3,6 +3,7 @@
     <item
         android:state_pressed="true"
         android:drawable="@drawable/thumb"/>
+    
 
     <item
         android:drawable="@drawable/thumb"/>

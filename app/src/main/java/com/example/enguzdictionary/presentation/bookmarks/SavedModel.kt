@@ -15,4 +15,8 @@ class SavedModel: SavedContract.Model {
     override fun getUzListFromRepo(): List<WordData> {
         return repo.cursorByFavouriteUzbek()
     }
+
+    override fun updateData(wordData: WordData) {
+        repo.updateData(wordData)
+    }
 }

@@ -30,14 +30,15 @@
 
     <ImageView
         android:id="@+id/volume"
-        android:layout_width="24dp"
+        android:layout_width="32dp"
+        android:padding="4dp"
         android:background="?selectableItemBackgroundBorderless"
         android:layout_marginStart="16dp"
         android:src="@drawable/volume"
         app:layout_constraintTop_toTopOf="@id/english"
         app:layout_constraintBottom_toBottomOf="@id/english"
         app:layout_constraintStart_toEndOf="@id/english"
-        android:layout_height="24dp"
+        android:layout_height="32dp"
         />
 
     <TextView
@@ -97,25 +98,29 @@
 
     <ImageView
         android:id="@+id/share"
-        android:layout_width="24dp"
+        android:layout_width="32dp"
+        android:padding="4dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/share"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/favourite"
-        android:layout_height="24dp"
+        android:layout_height="32dp"
         />
 
 
     <ImageView
         android:id="@+id/favourite"
-        android:layout_width="24dp"
+        android:layout_width="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:padding="4dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/bookmark_unchecked"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="24dp"
+        android:layout_height="32dp"
         />
 
 

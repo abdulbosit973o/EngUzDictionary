@@ -167,6 +167,18 @@ class UzbekFragment : Fragment(R.layout.fragment_home), UzbekContract.View {
             tts!!.setLanguage(Locale.US)
             tts!!.speak(wordData.uzbek, TextToSpeech.QUEUE_ADD, null)
         }
+        dialog.findViewById<ImageView>(R.id.share).setOnClickListener{
+            val intent = Intent(Intent.ACTION_SEND)
+            val shareBody = "Uzbek: ${wordData.uzbek}\n\nEnglish: ${wordData.english} ${wordData.countable}  ${wordData.transcript}\n\nDownload on google play\n\nhttps://play.google.com/store/apps/details?id=org.telegram.messenger"
+            intent.setType("text/plain")
+            intent.putExtra(
+                Intent.EXTRA_SUBJECT,
+                getString(androidx.appcompat.R.string.abc_action_bar_home_description)
+            )
+            intent.putExtra(Intent.EXTRA_TEXT, shareBody)
+            startActivity(Intent.createChooser(intent, getString(R.string.app_name)))
+        }
+
 
         dialog.show()
         dialog.window?.setBackgroundDrawable(ColorDrawable( Color.TRANSPARENT))
