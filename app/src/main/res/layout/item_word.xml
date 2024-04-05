@@ -5,7 +5,7 @@
     android:id="@+id/containerItem"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_word_item"
-    android:layout_height="100dp">
+    android:layout_height="76dp">
 
     <TextView
         android:id="@+id/english"
@@ -75,10 +75,9 @@
 
     <ImageView
         android:id="@+id/save"
-        android:layout_width="28dp"
-        android:padding="4dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:layout_height="26dp"
+        android:layout_width="56dp"
+        android:padding="20dp"
+        android:layout_height="56dp"
         android:src="@drawable/bookmark_unchecked"
         android:layout_marginRight="28dp"
         app:layout_constraintBottom_toBottomOf="parent"

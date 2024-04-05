@@ -30,7 +30,7 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
     private lateinit var adapter: ItemNimadir
     private lateinit var presenter: SavedContract.Presenter
     private lateinit var dialog: Dialog
-    var tts: TextToSpeech? = null
+    private var tts: TextToSpeech? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +53,8 @@ class SavedWords : Fragment(R.layout.fragment_bookmarks), SavedContract.View {
         when (pos) {
             0 -> {
                 presenter.loadCursor()
-                adapter = SavedWordsAdapter(list)            }
+                adapter = SavedWordsAdapter(list)
+            }
 
             1 -> {
                 presenter.loadUzList()

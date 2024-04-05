@@ -18,21 +18,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.dictionaryapp.utils.replaceScreen
 import com.example.enguzdictionary.R
 import com.example.enguzdictionary.data.local.MySharedPref
 import com.example.enguzdictionary.data.models.WordData
 import com.example.enguzdictionary.databinding.FragmentHomeBinding
+import com.example.enguzdictionary.databinding.FragmentHomeNavBinding
+import com.example.enguzdictionary.presentation.UzbekDictionary.UzbekFragment
 import com.example.enguzdictionary.presentation.adapter.WordAdapter
 import java.util.Locale
 
 
-class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
+class HomeFragment : Fragment(R.layout.fragment_home_nav), HomeContract.View {
 
     private val REQ_CODE_SPEECH_INPUT = 100
-    private val binding by viewBinding(FragmentHomeBinding::bind)
+    private val binding by viewBinding(FragmentHomeNavBinding::bind)
     private lateinit var adapter: WordAdapter
     private lateinit var presenter: HomeContract.Presenter
     private var currentQuery: String? = null
@@ -46,7 +51,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
         presenter = HomePresenter(this)
         adapter = WordAdapter()
         dialog = Dialog(requireContext())
-
 
 
         adapter.setFavouriteTouchListener {
@@ -63,9 +67,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
 //            }
 //        }
 
+        binding.appBarMain.menu.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
 
-        binding.recycler.adapter = adapter
-        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.appBarMain.recycler.adapter = adapter
+        binding.appBarMain.recycler.layoutManager = LinearLayoutManager(requireContext())
 
 //        val fastScroller = FastScroller(binding)
 //        fastScroller.setThumbSize(20, 20) // Set the width and height of the thumb
@@ -73,11 +80,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
 //        recyclerView.setVerticalScrollbarPosition(View.SCROLLBAR_POSITION_RIGHT) // Set scrollbar position
 
 
-        binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
+        binding.appBarMain.searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 currentQuery = newText
                 if (currentQuery?.isEmpty() == true) presenter.loadCursor()
@@ -87,22 +93,49 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
         })
 
 
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                R.id.nav_change_uz -> {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToUzbekFragment())
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                R.id.bookmarks -> {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSavedWords())
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                R.id.share -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                R.id.privacy_police -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                R.id.like -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                R.id.more_apps -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+            }
+            return@setNavigationItemSelectedListener true
+        }
+
+
 
 
         val close =
-            binding.searchView.findViewById(androidx.appcompat.R.id.search_close_btn) as ImageView
+            binding.appBarMain.searchView.findViewById(androidx.appcompat.R.id.search_close_btn) as ImageView
 
         close.setOnClickListener {
-            binding.searchView.setQuery(null, false)
-            binding.searchView.clearFocus()
+            binding.appBarMain.searchView.setQuery(null, false)
+            binding.appBarMain.searchView.clearFocus()
         }
 
-        binding.searchvoicebtn.setOnClickListener {
+        binding.appBarMain.searchvoicebtn.setOnClickListener {
            promptSpeechInput()
         }
-
-
-
 
         presenter.loadCursor()
     }
@@ -112,22 +145,22 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
     override fun Cursor(cursor: Cursor) {
         requireActivity().runOnUiThread {
             if (cursor.count == 0) {
-                binding.placeholder.visibility = View.VISIBLE
-                binding.none.visibility = View.VISIBLE
-                binding.recycler.visibility = View.INVISIBLE
+                binding.appBarMain.placeholder.visibility = View.VISIBLE
+                binding.appBarMain.none.visibility = View.VISIBLE
+                binding.appBarMain.recycler.visibility = View.INVISIBLE
                 return@runOnUiThread
             }
             else {
-                binding.placeholder.visibility = View.GONE
-                binding.none.visibility = View.GONE
-                binding.recycler.visibility = View.VISIBLE
+                binding.appBarMain.placeholder.visibility = View.GONE
+                binding.appBarMain.none.visibility = View.GONE
+                binding.appBarMain.recycler.visibility = View.VISIBLE
             }
             adapter.setCursor(cursor, currentQuery)
 
         }
 
     }
-    fun showBottomSheetDialog(wordData: WordData) {
+    private fun showBottomSheetDialog(wordData: WordData) {
 
         dialog.setContentView(R.layout.dialog_edit_delete)
 
@@ -222,7 +255,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeContract.View {
         if (s.contains(' ')) {
             str = s.split(" ")[0]
         }
-        binding.searchView.setQuery(str, true)
+        binding.appBarMain.searchView.setQuery(str, true)
     }
     private fun ConvertTextToSpeech(string: String) {
         if ("" == string) {
